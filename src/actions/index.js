@@ -1,28 +1,28 @@
-export const ADD_MOVIES = "ADD_MOVIES";
+export const ADD_HEROS = "ADD_HEROS";
 export const ADD_FAVOURITE = "ADD_FAVOURITE";
 export const REMOVE_FAVOURITE = "REMOVE_FAVOURITE";
 export const SHOW_FAVOURITES = "SHOW_FAVOURITES";
-export const ADD_MOVIE_TO_LIST = "ADD_MOVIE_TO_LIST";
+export const ADD_HERO_TO_LIST = "ADD_HERO_TO_LIST";
 export const ADD_SEARCH_RESULT = "ADD_SEARCH_RESULT";
 
-export function addMovies(movies) {
+export function addHeros(heros) {
   return {
-    type: ADD_MOVIES,
-    movies: movies,
+    type: ADD_HEROS,
+    heros: heros,
   };
 }
 
-export function addFovourite(movie) {
+export function addFovourite(hero) {
   return {
     type: ADD_FAVOURITE,
-    movie: movie,
+    hero: hero,
   };
 }
 
-export function removeFavourite(movie) {
+export function removeFavourite(hero) {
   return {
     type: REMOVE_FAVOURITE,
-    movie: movie,
+    hero: hero,
   };
 }
 
@@ -33,31 +33,31 @@ export function showFavourites(val) {
   };
 }
 
-export function addMovieToList(movie) {
+export function addHeroToList(hero) {
   return {
-    type: ADD_MOVIE_TO_LIST,
-    movie: movie,
+    type: ADD_HERO_TO_LIST,
+    hero: hero,
   };
 }
 
-export function handleMovieSearch(movie) {
-  const url = `https://www.superheroapi.com/api.php/1170962379927864/search/${movie}`;
+export function handleHeroSearch(hero) {
+  const url = `https://www.superheroapi.com/api.php/1170962379927864/search/${hero}`;
 
   return function (dispatch) {
     fetch(url)
       .then((response) => {
         return response.json();
       })
-      .then((movie) => {
-        console.log(movie);
-        dispatch(addMovieSearch(movie));
+      .then((hero) => {
+        console.log(hero);
+        dispatch(addHeroSearch(hero));
       });
   };
 }
 
-export function addMovieSearch(movie) {
+export function addHeroSearch(hero) {
   return {
     type: ADD_SEARCH_RESULT,
-    movie: movie,
+    hero: hero,
   };
 }

@@ -1,32 +1,32 @@
 import React from "react";
 import { data } from "../data";
 import Navbar from "./Navbar";
-import MovieCard from "./MovieCard";
-import { addMovies, showFavourites } from "../actions";
+import HeroCard from "./HeroCard";
+import { addHeros, showFavourites } from "../actions";
 import { connect } from "react-redux";
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.dispatch(addMovies(data));
+    this.props.dispatch(addHeros(data));
   }
 
-  isFavourite = (movie) => {
-    let favourite = this.props.movies.favourites;
-    let index = favourite.indexOf(movie);
+  isFavourite = (hero) => {
+    let favourite = this.props.heros.favourites;
+    let index = favourite.indexOf(hero);
     if (index === -1) {
       return false;
     }
     return true;
   };
 
-  showFavouriteMovies = (val) => {
+  showFavouriteHeros = (val) => {
     this.props.dispatch(showFavourites(val));
   };
 
   render() {
-    let displayList = this.props.movies.showFavourites
-      ? this.props.movies.favourites
-      : this.props.movies.list;
+    let displayList = this.props.heros.showFavourites
+      ? this.props.heros.favourites
+      : this.props.heros.list;
     return (
       <div className="App">
         <Navbar />
@@ -34,27 +34,27 @@ class App extends React.Component {
           <div className="tabs">
             <div
               className={`tab ${
-                this.props.movies.showFavourites ? "" : "active-tabs"
+                this.props.heros.showFavourites ? "" : "active-tabs"
               }`}
-              onClick={() => this.showFavouriteMovies(false)}
+              onClick={() => this.showFavouriteHeros(false)}
             >
-              Movies
+              Heros
             </div>
             <div
               className={`tab ${
-                this.props.movies.showFavourites ? "active-tabs" : ""
+                this.props.heros.showFavourites ? "active-tabs" : ""
               }`}
-              onClick={() => this.showFavouriteMovies(true)}
+              onClick={() => this.showFavouriteHeros(true)}
             >
               Favourites
             </div>
           </div>
           <div className="list">
-            {displayList.map((movie, index) => {
+            {displayList.map((hero, index) => {
               return (
-                <MovieCard
-                  isFavourite={this.isFavourite(movie)}
-                  movie={movie}
+                <HeroCard
+                  isFavourite={this.isFavourite(hero)}
+                  hero={hero}
                   key={index}
                 />
               );
@@ -68,7 +68,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movies,
+    heros: state.heros,
     search: state.search,
   };
 }

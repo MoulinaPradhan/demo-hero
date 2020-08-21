@@ -2,30 +2,30 @@ import React from "react";
 import { addFovourite, removeFavourite } from "../actions";
 import { connect } from "react-redux";
 
-class MovieCard extends React.Component {
+class HeroCard extends React.Component {
   handleFavouriteClick = () => {
-    let movie = this.props.movie;
-    this.props.dispatch(addFovourite(movie));
+    let hero = this.props.hero;
+    this.props.dispatch(addFovourite(hero));
   };
 
   handleUnFavouriteClick = () => {
-    let movie = this.props.movie;
-    this.props.dispatch(removeFavourite(movie));
+    let hero = this.props.hero;
+    this.props.dispatch(removeFavourite(hero));
   };
 
   render() {
-    const { movie, isFavourite } = this.props;
+    const { hero, isFavourite } = this.props;
 
     return (
-      <div className="movie-card">
+      <div className="hero-card">
         <div className="left">
-          <img src={movie.image} />
+          <img src={hero.image.url} />
         </div>
         <div className="right">
-          <div className="title">{movie.Title}</div>
-          <div className="plot">{movie.Plot}</div>
+          <div className="title">{hero.name}</div>
+          <div className="plot">{hero.Plot}</div>
           <div className="footer">
-            <div className="rating">{movie.imdbRating}</div>
+            <div className="rating">{hero.imdbRating}</div>
             {isFavourite ? (
               <button
                 className="unfavourite-btn"
@@ -54,6 +54,6 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedMovieCardComponent = connect(mapStateToProps)(MovieCard);
+const connectedHeroCardComponent = connect(mapStateToProps)(HeroCard);
 
-export default connectedMovieCardComponent;
+export default connectedHeroCardComponent;

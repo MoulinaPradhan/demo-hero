@@ -1,36 +1,36 @@
 import { combineReducers } from "redux";
 import {
-  ADD_MOVIES,
+  ADD_HEROS,
   ADD_FAVOURITE,
   REMOVE_FAVOURITE,
   SHOW_FAVOURITES,
-  ADD_MOVIE_TO_LIST,
+  ADD_HERO_TO_LIST,
   ADD_SEARCH_RESULT,
 } from "../actions/index";
 
-const initialMoviesState = {
+const initialHerosState = {
   list: [],
   favourites: [],
   showFavourites: false,
 };
-export function movies(state = initialMoviesState, action) {
-  if (action.type === ADD_MOVIES) {
+export function heros(state = initialHerosState, action) {
+  if (action.type === ADD_HEROS) {
     return {
       ...state,
-      list: action.movies,
+      list: action.heros,
     };
   }
 
   if (action.type === ADD_FAVOURITE) {
     return {
       ...state,
-      favourites: [action.movie, ...state.favourites],
+      favourites: [action.hero, ...state.favourites],
     };
   }
 
   if (action.type === REMOVE_FAVOURITE) {
-    let filtered = state.favourites.filter((movie) => {
-      return movie.Title !== action.movie.Title;
+    let filtered = state.favourites.filter((hero) => {
+      return hero.Title !== action.hero.Title;
     });
     return {
       ...state,
@@ -45,10 +45,10 @@ export function movies(state = initialMoviesState, action) {
     };
   }
 
-  if (action.type === ADD_MOVIE_TO_LIST) {
+  if (action.type === ADD_HERO_TO_LIST) {
     return {
       ...state,
-      list: [action.movie, ...state.list],
+      list: [action.hero, ...state.list],
     };
   }
 
@@ -64,11 +64,11 @@ export function search(state = initialSearchState, action) {
   if (action.type === ADD_SEARCH_RESULT) {
     return {
       ...state,
-      result: action.movie,
+      result: action.hero,
       showSearchResults: true,
     };
   }
-  if (action.type === ADD_MOVIE_TO_LIST) {
+  if (action.type === ADD_HERO_TO_LIST) {
     return {
       ...state,
       showSearchResults: false,
@@ -78,6 +78,6 @@ export function search(state = initialSearchState, action) {
 }
 
 export default combineReducers({
-  movies,
+  heros,
   search,
 });
