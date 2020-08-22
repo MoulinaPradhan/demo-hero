@@ -21,7 +21,7 @@ class HeroCard extends React.Component {
       <div className="hero-card">
         <div className="image">
           <Link to="/about">
-            <img src={hero.image.url} />
+            <img src={hero.image} />
           </Link>
         </div>
         <div className="right">
