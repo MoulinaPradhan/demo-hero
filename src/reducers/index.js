@@ -56,7 +56,7 @@ export function heros(state = initialHerosState, action) {
 }
 
 const initialSearchState = {
-  result: {},
+  result: [],
   showSearchResults: false,
 };
 

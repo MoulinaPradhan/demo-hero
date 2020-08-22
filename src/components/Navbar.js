@@ -12,6 +12,8 @@ class Navbar extends React.Component {
     console.log("this.prps.search.result", this.props.search.result);
   };
   render() {
+    let arr = this.props.search;
+    console.log(arr, "arr");
     return (
       <div className="nav">
         <div className="search-container">
@@ -23,24 +25,21 @@ class Navbar extends React.Component {
               src="https://image.flaticon.com/icons/svg/1296/1296902.svg"
             />
           </button>
-
-          {this.props.search.showSearchResults && (
-            <div className="search-results">
-              <div className="search-result">
-                <img src={this.props.search.result.results.image} />
-                <div className="hero-info">
-                  <span>{this.props.search.result.results.name}</span>
-                  <button
-                    onClick={() =>
-                      this.handleAddToHeros(this.props.search.result)
-                    }
-                  >
-                    Add To Heros
-                  </button>
+          {this.props.search.map((search) => {
+            return (
+              <div className="search-results" key={search.key}>
+                <div className="search-result">
+                  <img src={search.image.url} />
+                  <div className="hero-info">
+                    <span>{search.name}</span>
+                    <button onClick={() => this.handleAddToHeros(search)}>
+                      Add To Heros
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            );
+          })}
         </div>
       </div>
     );
@@ -49,7 +48,7 @@ class Navbar extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    search: state.search,
+    search: state.search.result,
   };
 }
 

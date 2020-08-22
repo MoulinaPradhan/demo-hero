@@ -16,12 +16,11 @@ class HeroCard extends React.Component {
 
   render() {
     const { hero, isFavourite } = this.props;
-
     return (
       <div className="hero-card">
         <div className="image">
           <Link to="/about">
-            <img src={hero.image} />
+            <img src={hero.image.url} />
           </Link>
         </div>
         <div className="right">

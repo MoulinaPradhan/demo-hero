@@ -49,8 +49,7 @@ export function handleHeroSearch(hero) {
         return response.json();
       })
       .then((hero) => {
-        console.log(hero);
-        dispatch(addHeroSearch(hero));
+        dispatch(addHeroSearch(hero.results));
       });
   };
 }
