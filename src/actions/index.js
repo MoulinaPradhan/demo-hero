@@ -41,10 +41,10 @@ export function addHeroToList(hero) {
 }
 
 export function handleHeroSearch(hero) {
-  const url = `https://www.superheroapi.com/api.php/1170962379927864/search/${hero}`;
+  const api = `https://www.superheroapi.com/api.php/1170962379927864/search/${hero}`;
 
   return function (dispatch) {
-    fetch(url)
+    fetch(api)
       .then((response) => {
         return response.json();
       })

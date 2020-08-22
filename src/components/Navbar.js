@@ -1,7 +1,7 @@
 import React from "react";
 import { addHeroToList, handleHeroSearch } from "../actions";
 import { connect } from "react-redux";
-
+import { BrowserRouter as Link } from "react-router-dom";
 class Navbar extends React.Component {
   handleAddToHeros = (hero) => {
     this.props.dispatch(addHeroToList(hero));

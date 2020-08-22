@@ -128,7 +128,8 @@ body {
   border: none;
   border-radius: 3px;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #f1f1f1;
-  display: flex;
+  display: inline-block;
+  margin: 5px;
 }
 .hero-card:not(:first-child) {
   margin-top: 20px;
@@ -136,11 +137,12 @@ body {
 .hero-card:last-child {
   margin-bottom: 50px;
 }
-.hero-card .left {
+.hero-card .image {
   flex: 1;
 }
-.hero-card .left img {
+.hero-card .image img {
   height: 250px;
+  width: 200px;
 }
 .hero-card .right {
   position: relative;
@@ -189,4 +191,21 @@ body {
   padding: 20px 0;
   font-size: 20px;
   color: #6d6d6d;
+}
+/*about*/
+.heading {
+  text-transform: capitalize;
+  color: yellow;
+  text-align: center;
+}
+#about-section {
+  height: 200px;
+  width: 600px;
+  background-color: white;
+  margin: auto;
+}
+#hero-img {
+  height: 50%;
+  width: 60%;
+  margin: auto;
 }

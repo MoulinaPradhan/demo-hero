@@ -1,6 +1,7 @@
 import React from "react";
 import { addFovourite, removeFavourite } from "../actions";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 class HeroCard extends React.Component {
   handleFavouriteClick = () => {
@@ -18,8 +19,10 @@ class HeroCard extends React.Component {
 
     return (
       <div className="hero-card">
-        <div className="left">
-          <img src={hero.image.url} />
+        <div className="image">
+          <Link to="/about">
+            <img src={hero.image.url} />
+          </Link>
         </div>
         <div className="right">
           <div className="title">{hero.name}</div>
